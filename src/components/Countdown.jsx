@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
 
 const Countdown = () => {
-    // Default target date is next year, January 1st. User can change it.
+    // Default target date is 11th May 2026 12 am.
     const getDefaultDate = () => {
-        const nextYear = new Date().getFullYear() + 1;
-        return `${nextYear}-01-01T00:00`;
+        return "2026-05-11T00:00";
     };
 
     const [targetDate, setTargetDate] = useState(getDefaultDate());
@@ -57,12 +56,20 @@ const Countdown = () => {
 
                     <div className="mt-8 flex flex-col items-center justify-center gap-2">
                         <label className="text-gray-400 font-sans">Set Your Birthday Date:</label>
-                        <input
-                            type="datetime-local"
-                            value={targetDate}
-                            onChange={(e) => setTargetDate(e.target.value)}
-                            className="bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 font-sans focus:outline-none focus:border-rose transition-colors"
-                        />
+                        <div className="flex items-center gap-2">
+                            <input
+                                type="datetime-local"
+                                value={targetDate}
+                                onChange={(e) => setTargetDate(e.target.value)}
+                                className="bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 font-sans focus:outline-none focus:border-rose transition-colors"
+                            />
+                            <button
+                                onClick={() => setTargetDate(getDefaultDate())}
+                                className="bg-white/10 border border-white/20 text-white rounded-lg px-4 py-2 font-sans hover:bg-rose hover:border-rose focus:outline-none transition-colors active:scale-95"
+                            >
+                                Reset
+                            </button>
+                        </div>
                     </div>
                 </motion.div>
 
