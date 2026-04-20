@@ -101,18 +101,17 @@ const Game = () => {
                                         key={tile}
                                         layout
                                         initial={false}
-                                        className={`rounded overflow-hidden cursor-pointer shadow-sm ${isEmpty ? 'bg-transparent' : 'bg-gray-800'}`}
+                                        className={`rounded overflow-hidden cursor-pointer shadow-sm relative w-full h-full ${isEmpty ? 'bg-transparent' : 'bg-gray-800'}`}
                                         onClick={() => handleTileClick(index)}
                                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
                                     >
                                         {!isEmpty && (
                                             <div
-                                                className="w-[300px] h-[300px] pointer-events-none"
+                                                className="absolute inset-0 pointer-events-none"
                                                 style={{
                                                     backgroundImage: `url(${puzzleImage})`,
-                                                    backgroundSize: '300px 300px',
-                                                    backgroundPosition: `-${(tile % 3) * 100 + 4}px -${Math.floor(tile / 3) * 100 + 4}px`,
-                                                    transform: `translate(${(tile % 3) * 100 - (index % 3) * 100}px, ${Math.floor(tile / 3) * 100 - Math.floor(index / 3) * 100}px)`
+                                                    backgroundSize: '300% 300%',
+                                                    backgroundPosition: `${(tile % 3) * 50}% ${Math.floor(tile / 3) * 50}%`
                                                 }}
                                             />
                                         )}
