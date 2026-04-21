@@ -33,6 +33,19 @@ const albums = [
             { type: "image", src: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?q=80&w=800&auto=format&fit=crop" },
         ]
     },
+    {
+        id: 4,
+        title: "You Slay ✨",
+        cover: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop", // Fashion/Cool
+        media: [
+            // Placeholder for an image
+            { type: "image", src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop" },
+            // Placeholder for a video to be added later
+            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            // Placeholders can be freely added below
+            { type: "image", src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop" }
+        ]
+    },
 ];
 
 const Gallery = () => {
