@@ -76,8 +76,15 @@ const Gallery = () => {
     };
 
     return (
-        <section id="gallery" className="py-20 bg-gradient-to-b from-pink-50 to-white dark:from-[#0a0a0a] dark:to-[#111] min-h-screen relative transition-colors duration-500">
-            <div className="max-w-6xl mx-auto px-4">
+        <section id="gallery" className="py-20 bg-gradient-to-b from-pink-50 to-white dark:from-[#0a0a0a] dark:to-[#111] min-h-screen relative transition-colors duration-500 overflow-hidden">
+            {/* Background Floating Elements */}
+            <div className="absolute inset-0 pointer-events-none opacity-5 dark:opacity-[0.03]">
+                <motion.div animate={{ y: [0, -30, 0], x: [0, 30, 0], rotate: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }} className="absolute top-40 left-10 text-rose-500 dark:text-white"><Camera size={120} /></motion.div>
+                <motion.div animate={{ y: [0, 40, 0], x: [0, -20, 0], rotate: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 18, ease: "easeInOut", delay: 2 }} className="absolute bottom-40 right-10 text-purple-500 dark:text-white"><Camera size={150} /></motion.div>
+                <motion.div animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 12, ease: "easeInOut", delay: 5 }} className="absolute top-1/2 left-1/4 text-pink-500 dark:text-white"><Camera size={80} /></motion.div>
+            </div>
+
+            <div className="max-w-6xl mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

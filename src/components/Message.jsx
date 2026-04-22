@@ -7,8 +7,16 @@ const Message = () => {
         <section className="py-32 bg-gradient-to-br from-white to-rose-50 dark:from-[#1a0f14] dark:to-[#110a0d] relative overflow-hidden flex items-center justify-center transition-colors duration-500">
             {/* Background decoration */}
             <div className="absolute inset-0 opacity-40 dark:opacity-10 pointer-events-none">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-rose-200 dark:bg-gold-light rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px]"></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200 dark:bg-rose rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px]"></div>
+                <motion.div 
+                    animate={{ y: [0, -30, 0], x: [0, 30, 0], scale: [1, 1.1, 1] }} 
+                    transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }} 
+                    className="absolute top-0 right-0 w-96 h-96 bg-rose-200 dark:bg-gold-light rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px]"
+                ></motion.div>
+                <motion.div 
+                    animate={{ y: [0, 30, 0], x: [0, -30, 0], scale: [1, 1.2, 1] }} 
+                    transition={{ repeat: Infinity, duration: 12, ease: "easeInOut", delay: 1 }} 
+                    className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200 dark:bg-rose rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px]"
+                ></motion.div>
             </div>
 
             <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">

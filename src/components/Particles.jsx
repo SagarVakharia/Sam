@@ -25,7 +25,7 @@ const Particles = () => {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-gold-light opacity-30"
+          className="absolute rounded-full bg-rose-400 dark:bg-gold-light opacity-40 dark:opacity-30"
           style={{
             width: p.size,
             height: p.size,

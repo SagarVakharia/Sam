@@ -41,7 +41,13 @@ const Countdown = () => {
     }, [targetDate]);
 
     return (
-        <section id="countdown" className="py-20 bg-gradient-to-b from-rose-100 to-white dark:from-black dark:to-[#1a0f14] relative transition-colors duration-500">
+        <section id="countdown" className="py-20 bg-gradient-to-b from-rose-100 to-white dark:from-black dark:to-[#1a0f14] relative transition-colors duration-500 overflow-hidden">
+            {/* Background Floating Elements */}
+            <div className="absolute inset-0 pointer-events-none opacity-10 dark:opacity-5">
+                <motion.div animate={{ y: [0, 40, 0], rotate: [0, -45, 0] }} transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }} className="absolute top-10 left-1/4 text-rose-500 dark:text-rose"><Clock size={100} /></motion.div>
+                <motion.div animate={{ y: [0, -40, 0], rotate: [0, 45, 0] }} transition={{ repeat: Infinity, duration: 12, ease: "easeInOut", delay: 2 }} className="absolute bottom-10 right-1/4 text-purple-500 dark:text-gold-light"><Clock size={120} /></motion.div>
+            </div>
+
             <div className="max-w-4xl mx-auto px-4 z-10 relative">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

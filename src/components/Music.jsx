@@ -68,7 +68,14 @@ const Music = () => {
     const currentTrack = playlist[currentTrackIndex];
 
     return (
-        <section id="music" className="py-20 bg-gradient-to-b from-rose-50 to-pink-50 dark:from-black dark:to-[#0a0a0a] relative transition-colors duration-500">
+        <section id="music" className="py-20 bg-gradient-to-b from-rose-50 to-pink-50 dark:from-black dark:to-[#0a0a0a] relative transition-colors duration-500 overflow-hidden">
+            {/* Background Floating Notes */}
+            <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10">
+                <motion.div animate={{ y: [0, -50, 0], x: [0, 20, 0], rotate: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }} className="absolute top-20 left-10 text-rose-400 dark:text-purple-400"><MusicIcon size={40} /></motion.div>
+                <motion.div animate={{ y: [0, 40, 0], x: [0, -30, 0], rotate: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 10, ease: "easeInOut", delay: 2 }} className="absolute bottom-40 right-20 text-purple-400 dark:text-pink-400"><MusicIcon size={60} /></motion.div>
+                <motion.div animate={{ y: [0, -60, 0], x: [0, -20, 0], rotate: [0, 45, 0] }} transition={{ repeat: Infinity, duration: 12, ease: "easeInOut", delay: 1 }} className="absolute top-40 right-1/4 text-pink-400 dark:text-gold-light"><MusicIcon size={30} /></motion.div>
+            </div>
+
             <div className="max-w-3xl mx-auto px-4 z-10 relative">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

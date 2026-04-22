@@ -179,7 +179,14 @@ const Game = () => {
     };
 
     return (
-        <section id="game" className="py-20 bg-gradient-to-b from-pink-50 to-rose-100 dark:from-[#0a0a0a] dark:to-black relative flex items-center justify-center min-h-[80vh] transition-colors duration-500">
+        <section id="game" className="py-20 bg-gradient-to-b from-pink-50 to-rose-100 dark:from-[#0a0a0a] dark:to-black relative flex items-center justify-center min-h-[80vh] transition-colors duration-500 overflow-hidden">
+            {/* Background Floating Elements */}
+            <div className="absolute inset-0 pointer-events-none opacity-10 dark:opacity-5">
+                <motion.div animate={{ y: [0, -50, 0], x: [0, 50, 0], rotate: [0, 90, 0] }} transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }} className="absolute top-20 left-20 text-green-500 dark:text-green-400"><Puzzle size={80} /></motion.div>
+                <motion.div animate={{ y: [0, 60, 0], x: [0, -40, 0], rotate: [0, -90, 0] }} transition={{ repeat: Infinity, duration: 25, ease: "easeInOut", delay: 2 }} className="absolute bottom-20 right-20 text-rose-500 dark:text-rose"><Puzzle size={100} /></motion.div>
+                <motion.div animate={{ y: [0, -30, 0], rotate: [0, 45, 0] }} transition={{ repeat: Infinity, duration: 15, ease: "easeInOut", delay: 5 }} className="absolute top-1/2 right-10 text-purple-500 dark:text-purple-400"><Puzzle size={60} /></motion.div>
+            </div>
+
             <div className="max-w-4xl mx-auto px-4 z-10 w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

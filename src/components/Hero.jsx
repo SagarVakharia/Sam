@@ -62,7 +62,7 @@ const Hero = ({ name = "Mimi" }) => {
             </div>
 
             {/* Decorative gradient orb */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-400 dark:bg-rose rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[150px] opacity-30 dark:opacity-20 pointer-events-none animate-pulse" style={{ animationDuration: '6s' }}></div>
         </section>
     );
 };
