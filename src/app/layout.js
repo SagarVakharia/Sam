@@ -1,5 +1,6 @@
 import { Inter, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,9 +27,12 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${inter.variable} ${playfair.variable} ${dancingScript.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="bg-black text-white min-h-screen flex flex-col font-sans">
-        {children}
+      <body className="bg-background text-foreground min-h-screen flex flex-col font-sans transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
@@ -8,11 +10,32 @@
   --color-gold: #D4AF37;
   --color-gold-light: #F3E5AB;
   --color-rose: #C08081;
+  --color-rose-light: #fdf5f5;
+  --color-rose-bold: #e06d71;
 }
 
 :root {
+  /* Light Theme (Bright and Appealing) */
+  --background: #fffafa; /* Very soft rose/warm white */
+  --foreground: #33151b; /* Deep brown/rose */
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(192, 128, 129, 0.2);
+  --scrollbar-track: #fce8e8;
+  --scrollbar-thumb: #d9aeb0;
+  --scrollbar-thumb-hover: #c08081;
+  --glass-glow: rgba(255, 255, 255, 0.5);
+}
+
+.dark {
+  /* Dark Theme */
   --background: #000000;
   --foreground: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --scrollbar-track: #0a0a0a;
+  --scrollbar-thumb: #333333;
+  --scrollbar-thumb-hover: #555555;
+  --glass-glow: rgba(0, 0, 0, 0.5);
 }
 
 html {
@@ -20,9 +43,10 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 ::-webkit-scrollbar {
@@ -30,14 +54,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--scrollbar-thumb-hover);
 }

@@ -20,7 +20,7 @@ const Hero = ({ name = "Mimi" }) => {
     const title = `Happy Birthday ${name}!`;
 
     return (
-        <section id="home" className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-black via-[#1a0f14] to-black">
+        <section id="home" className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-rose-100 via-white to-pink-50 dark:from-black dark:via-[#1a0f14] dark:to-black transition-colors duration-500">
             <Particles />
 
             <div className="z-10 text-center px-4">
@@ -28,7 +28,7 @@ const Hero = ({ name = "Mimi" }) => {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="flex flex-wrap justify-center font-dancing text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-rose drop-shadow-lg mb-6"
+                    className="flex flex-wrap justify-center font-dancing text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-purple-500 to-rose-400 dark:from-gold-light dark:via-gold dark:to-rose drop-shadow-lg mb-6"
                 >
                     {title.split("").map((char, index) => (
                         <motion.span key={index} variants={letterVariants}>
@@ -41,7 +41,7 @@ const Hero = ({ name = "Mimi" }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2, duration: 1 }}
-                    className="text-lg md:text-2xl font-serif text-gray-300 max-w-2xl mx-auto"
+                    className="text-lg md:text-2xl font-serif text-gray-800 dark:text-gray-300 max-w-2xl mx-auto"
                 >
                     Let's celebrate this special day together!
                 </motion.p>

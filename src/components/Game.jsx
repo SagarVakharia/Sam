@@ -179,7 +179,7 @@ const Game = () => {
     };
 
     return (
-        <section id="game" className="py-20 bg-[#0a0a0a] relative flex items-center justify-center min-h-[80vh]">
+        <section id="game" className="py-20 bg-gradient-to-b from-pink-50 to-rose-100 dark:from-[#0a0a0a] dark:to-black relative flex items-center justify-center min-h-[80vh] transition-colors duration-500">
             <div className="max-w-4xl mx-auto px-4 z-10 w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -187,7 +187,7 @@ const Game = () => {
                     viewport={{ once: true }}
                     className="text-center mb-10"
                 >
-                    <h2 className="text-4xl font-playfair text-white flex items-center justify-center gap-3">
+                    <h2 className="text-4xl font-playfair text-black dark:text-white flex items-center justify-center gap-3">
                         <Puzzle className="text-green-400" size={36} /> Birthday Puzzle Challenge
                     </h2>
                 </motion.div>
@@ -195,26 +195,26 @@ const Game = () => {
                 <div className="flex flex-col md:flex-row gap-12 items-center justify-center">
 
                     {/* Game Board */}
-                    <div className="bg-white/5 p-4 rounded-xl shadow-2xl border border-white/10">
-                        <div className="flex justify-between items-center mb-4 text-gray-300 font-sans px-2">
-                            <span className="bg-white/10 px-4 py-1 rounded-full text-sm">Moves: <strong className="text-rose">{moves}</strong></span>
+                    <div className="bg-white/70 dark:bg-white/5 backdrop-blur-md p-4 rounded-xl shadow-xl border border-rose/20 dark:border-white/10">
+                        <div className="flex justify-between items-center mb-4 text-gray-700 dark:text-gray-300 font-sans px-2">
+                            <span className="bg-black/5 dark:bg-white/10 px-4 py-1 rounded-full text-sm">Moves: <strong className="text-rose">{moves}</strong></span>
                             <div className="flex gap-2">
                                 <button
                                     onClick={getHint}
-                                    className="flex items-center gap-1 text-yellow-400 hover:text-yellow-300 transition-colors bg-white/10 px-4 py-1 rounded-full text-sm"
+                                    className="flex items-center gap-1 text-yellow-600 dark:text-yellow-400 hover:text-yellow-500 dark:hover:text-yellow-300 transition-colors bg-black/5 dark:bg-white/10 px-4 py-1 rounded-full text-sm"
                                 >
                                     <Lightbulb size={14} /> Hint
                                 </button>
                                 <button
                                     onClick={() => shufflePuzzle(true)}
-                                    className="flex items-center gap-1 hover:text-white transition-colors bg-white/10 px-4 py-1 rounded-full text-sm"
+                                    className="flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors bg-black/5 dark:bg-white/10 px-4 py-1 rounded-full text-sm"
                                 >
                                     <RotateCcw size={14} /> Reset
                                 </button>
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-0 relative w-[300px] h-[300px] mx-auto bg-black rounded-lg border-2 border-white/20 shadow-xl overflow-hidden">
+                        <div className="grid grid-cols-3 gap-0 relative w-[300px] h-[300px] mx-auto bg-gray-200 dark:bg-black rounded-lg border-2 border-black/20 dark:border-white/20 shadow-xl overflow-hidden">
                             {tiles.map((tile, index) => {
                                 const isEmpty = tile === 8;
                                 const isHint = hintIndex === index;
@@ -223,7 +223,7 @@ const Game = () => {
                                         key={tile}
                                         layout
                                         initial={false}
-                                        className={`relative w-full h-full cursor-pointer border-[0.5px] border-black/50 ${isEmpty ? 'bg-transparent border-0' : 'bg-gray-800 hover:brightness-110'} ${isHint ? 'bg-yellow-500/50 z-20 shadow-[inset_0_0_15px_rgba(250,204,21,1)] ring-2 ring-yellow-400' : ''}`}
+                                        className={`relative w-full h-full cursor-pointer border-[0.5px] border-white/50 dark:border-black/50 ${isEmpty ? 'bg-transparent border-0' : 'bg-gray-200 dark:bg-gray-800 hover:brightness-110'} ${isHint ? 'bg-yellow-500/50 z-20 shadow-[inset_0_0_15px_rgba(250,204,21,1)] ring-2 ring-yellow-400' : ''}`}
                                         onClick={() => handleTileClick(index)}
                                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
                                     >
@@ -252,12 +252,12 @@ const Game = () => {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="absolute inset-0 z-10 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center rounded-lg"
+                                    className="absolute inset-0 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center rounded-lg"
                                 >
-                                    <Trophy size={60} className="text-yellow-400 mb-4" />
-                                    <h3 className="text-2xl font-bold font-sans text-white mb-2">You Won!</h3>
+                                    <Trophy size={60} className="text-yellow-500 dark:text-yellow-400 mb-4" />
+                                    <h3 className="text-2xl font-bold font-sans text-black dark:text-white mb-2">You Won!</h3>
                                     <div className="flex gap-3 mt-4">
-                                        <button onClick={() => shufflePuzzle(true)} className="px-5 py-2 bg-white/20 hover:bg-white/30 rounded-full text-white font-bold transition">Replay</button>
+                                        <button onClick={() => shufflePuzzle(true)} className="px-5 py-2 bg-black/10 dark:bg-white/20 hover:bg-black/20 dark:hover:bg-white/30 rounded-full text-black dark:text-white font-bold transition">Replay</button>
                                         <button onClick={() => changePuzzle((currentPuzzleIndex + 1) % puzzleImages.length)} className="px-5 py-2 bg-rose hover:bg-rose/80 rounded-full text-white font-bold tracking-wide transition flex items-center gap-1">Next <ChevronRight size={18} /></button>
                                     </div>
                                 </motion.div>
@@ -267,8 +267,8 @@ const Game = () => {
 
                     {/* Reference Image */}
                     <div className="flex flex-col items-center">
-                        <h3 className="text-xl font-sans text-gray-300 mb-4">Solution Preview</h3>
-                        <div className="w-[200px] h-[200px] rounded-lg shadow-xl border-4 border-white/10 overflow-hidden bg-black/20">
+                        <h3 className="text-xl font-sans text-gray-700 dark:text-gray-300 mb-4">Solution Preview</h3>
+                        <div className="w-[200px] h-[200px] rounded-lg shadow-xl border-4 border-black/10 dark:border-white/10 overflow-hidden bg-black/5 dark:bg-black/20">
                             <img src={puzzleImage} alt={`Puzzle Solution ${currentPuzzleIndex + 1}`} className="w-full h-full object-cover" />
                         </div>
                     </div>
@@ -277,16 +277,16 @@ const Game = () => {
 
                 {/* Puzzle Selector Thumbnail Grid */}
                 <div className="mt-16 w-full">
-                    <h3 className="text-xl font-sans text-gray-400 mb-6 text-center">Choose a Puzzle To Solve</h3>
+                    <h3 className="text-xl font-sans text-gray-600 dark:text-gray-400 mb-6 text-center">Choose a Puzzle To Solve</h3>
                     <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
                         {puzzleImages.map((imgSrc, index) => (
                             <button
                                 key={index}
                                 onClick={() => changePuzzle(index)}
-                                className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden border-2 transition-all duration-300 bg-black/40 hover:scale-105 hover:shadow-[0_0_15px_rgba(192,128,129,0.5)] ${currentPuzzleIndex === index ? 'border-rose scale-110 shadow-[0_0_20px_rgba(192,128,129,0.8)] opacity-100 relative z-10' : 'border-white/10 opacity-60 hover:opacity-100'}`}
+                                className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden border-2 transition-all duration-300 bg-white/40 dark:bg-black/40 hover:scale-105 hover:shadow-[0_0_15px_rgba(192,128,129,0.5)] ${currentPuzzleIndex === index ? 'border-rose scale-110 shadow-[0_0_20px_rgba(192,128,129,0.8)] opacity-100 relative z-10' : 'border-black/10 dark:border-white/10 opacity-60 hover:opacity-100'}`}
                             >
                                 <img src={imgSrc} alt={`Puzzle ${index + 1}`} className="w-full h-full object-cover" />
-                                <div className="absolute bottom-0 left-0 right-0 bg-black/60 py-1 text-xs text-white font-sans text-center">
+                                <div className="absolute bottom-0 left-0 right-0 bg-white/80 dark:bg-black/60 py-1 text-xs text-black dark:text-white font-sans text-center">
                                     Puzzle {index + 1}
                                 </div>
                             </button>

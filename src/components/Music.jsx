@@ -68,7 +68,7 @@ const Music = () => {
     const currentTrack = playlist[currentTrackIndex];
 
     return (
-        <section id="music" className="py-20 bg-black relative">
+        <section id="music" className="py-20 bg-gradient-to-b from-rose-50 to-pink-50 dark:from-black dark:to-[#0a0a0a] relative transition-colors duration-500">
             <div className="max-w-3xl mx-auto px-4 z-10 relative">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -76,8 +76,8 @@ const Music = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl font-playfair text-white flex items-center justify-center gap-3">
-                        <MusicIcon className="text-purple-400" size={36} />
+                    <h2 className="text-4xl font-playfair text-black dark:text-white flex items-center justify-center gap-3">
+                        <MusicIcon className="text-purple-500 dark:text-purple-400" size={36} />
                         Birthday Playlist
                     </h2>
                 </motion.div>
@@ -86,7 +86,7 @@ const Music = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="bg-white text-black rounded-3xl p-6 md:p-10 shadow-2xl overflow-hidden relative"
+                    className="bg-white/80 dark:bg-zinc-900 backdrop-blur-md border border-rose/20 dark:border-white/5 text-black dark:text-white rounded-3xl p-6 md:p-10 shadow-xl overflow-hidden relative"
                 >
                     {/* Audio Element */}
                     <audio
@@ -153,10 +153,10 @@ const Music = () => {
                                 <div
                                     key={track.id}
                                     onClick={() => { setCurrentTrackIndex(i); setIsPlaying(true); }}
-                                    className={`flex justify-between items-center p-4 rounded-xl cursor-pointer transition-colors ${currentTrackIndex === i ? 'bg-gradient-to-r from-pink-100 to-teal-50 border-l-4 border-rose' : 'hover:bg-gray-50'}`}
+                                    className={`flex justify-between items-center p-4 rounded-xl cursor-pointer transition-colors ${currentTrackIndex === i ? 'bg-gradient-to-r from-pink-100 to-teal-50 dark:from-pink-900/30 dark:to-teal-900/30 border-l-4 border-rose' : 'hover:bg-gray-50 dark:hover:bg-zinc-800'}`}
                                 >
-                                    <span className="font-sans font-medium text-gray-800">{i + 1}. {track.title}</span>
-                                    <span className="font-sans text-sm text-gray-500">{track.duration}</span>
+                                    <span className="font-sans font-medium text-gray-800 dark:text-gray-200">{i + 1}. {track.title}</span>
+                                    <span className="font-sans text-sm text-gray-500 dark:text-gray-400">{track.duration}</span>
                                 </div>
                             ))}
                         </div>

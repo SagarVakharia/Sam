@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
     { name: "Home", href: "#home" },
@@ -27,8 +28,8 @@ const Navbar = () => {
     return (
         <header
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-black/60 backdrop-blur-md border-b border-white/10 py-3 text-white shadow-lg"
-                    : "bg-transparent py-5 text-white/90"
+                    ? "bg-white/80 dark:bg-black/60 backdrop-blur-md border-b border-black/10 dark:border-white/10 py-3 text-black dark:text-white shadow-lg"
+                    : "bg-transparent py-5 text-black/90 dark:text-white/90"
                 }`}
         >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,11 +62,15 @@ const Navbar = () => {
                         ))}
                     </nav>
 
-                    {/* Mobile Menu Toggle */}
-                    <div className="md:hidden">
-                        <button onClick={() => setIsOpen(!isOpen)} className="text-white">
-                            {isOpen ? <X size={28} /> : <Menu size={28} />}
-                        </button>
+                    <div className="flex items-center gap-4">
+                        <ThemeToggle />
+                        
+                        {/* Mobile Menu Toggle */}
+                        <div className="md:hidden">
+                            <button onClick={() => setIsOpen(!isOpen)} className="text-black dark:text-white">
+                                {isOpen ? <X size={28} /> : <Menu size={28} />}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,7 +80,7 @@ const Navbar = () => {
                 <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    className="md:hidden bg-black/95 backdrop-blur-md border-b border-white/10"
+                    className="md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-md border-b border-black/10 dark:border-white/10"
                 >
                     <div className="flex flex-col items-center py-4 space-y-4">
                         {navLinks.map((link) => (
