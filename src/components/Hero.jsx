@@ -1,9 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Particles from "./Particles";
+import CakeCutting from "./CakeCutting";
 
 const Hero = ({ name = "Mimi" }) => {
+    const [showCake, setShowCake] = useState(false);
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -52,17 +55,29 @@ const Hero = ({ name = "Mimi" }) => {
                     transition={{ delay: 2.5, duration: 0.5, type: "spring" }}
                     className="mt-10"
                 >
-                    <a
-                        href="#gallery"
-                        className="px-8 py-4 bg-gradient-to-r from-rose to-purple-800 text-white font-sans rounded-full shadow-[0_0_15px_rgba(192,128,129,0.5)] hover:shadow-[0_0_25px_rgba(192,128,129,0.8)] transition-all duration-300 font-semibold tracking-wide"
+                    <button
+                        onClick={() => setShowCake(true)}
+                        className="px-8 py-4 bg-gradient-to-r from-rose to-purple-800 text-white font-sans rounded-full shadow-[0_0_15px_rgba(192,128,129,0.5)] hover:shadow-[0_0_25px_rgba(192,128,129,0.8)] transition-all duration-300 font-semibold tracking-wide cursor-pointer"
                     >
                         Start the Celebration! 🎊
-                    </a>
+                    </button>
                 </motion.div>
             </div>
 
             {/* Decorative gradient orb */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-400 dark:bg-rose rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[150px] opacity-30 dark:opacity-20 pointer-events-none animate-pulse" style={{ animationDuration: '6s' }}></div>
+
+            <AnimatePresence>
+                {showCake && (
+                    <CakeCutting 
+                        onCut={() => {
+                            setShowCake(false);
+                            // Scroll to gallery section smoothly after cutting
+                            document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
+                        }} 
+                    />
+                )}
+            </AnimatePresence>
         </section>
     );
 };
