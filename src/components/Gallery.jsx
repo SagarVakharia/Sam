@@ -136,12 +136,21 @@ const Gallery = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="text-center mb-16"
+                            className="text-center mb-16 flex flex-col items-center"
                         >
-                            <h2 className="text-4xl md:text-5xl font-playfair text-black dark:text-white flex items-center justify-center gap-3">
-                                <Camera className="text-rose" size={40} />
-                                Memory Gallery
-                            </h2>
+                            <div className="flex items-center justify-center gap-4">
+                                <h2 className="text-4xl md:text-5xl font-playfair text-black dark:text-white flex items-center justify-center gap-3">
+                                    <Camera className="text-rose" size={40} />
+                                    Memory Gallery
+                                </h2>
+                                <button
+                                    onClick={() => { setIsUnlocked(false); setPasswordInput(""); }}
+                                    className="text-rose-400 hover:text-rose-600 transition-all p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20"
+                                    title="Lock Gallery"
+                                >
+                                    <Lock size={28} />
+                                </button>
+                            </div>
                             <p className="text-gray-600 dark:text-gray-400 mt-4 font-sans text-lg">Select an album to relive the moments</p>
                         </motion.div>
 
