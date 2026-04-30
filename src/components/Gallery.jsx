@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, X, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { Camera, X, ChevronLeft, ChevronRight, Play, Lock } from "lucide-react";
 
 // Placeholder data structure for user to easily swap
 const albums = [
@@ -51,6 +51,19 @@ const albums = [
 const Gallery = () => {
     const [activeAlbum, setActiveAlbum] = useState(null);
     const [[currentIndex, direction], setPage] = useState([0, 0]);
+    const [isUnlocked, setIsUnlocked] = useState(false);
+    const [passwordInput, setPasswordInput] = useState("");
+    const [error, setError] = useState(false);
+
+    const handleUnlock = (e) => {
+        e.preventDefault();
+        if (passwordInput === "Bubs_Birthday") {
+            setIsUnlocked(true);
+            setError(false);
+        } else {
+            setError(true);
+        }
+    };
 
     const openAlbum = (album) => {
         setActiveAlbum(album);
@@ -85,44 +98,79 @@ const Gallery = () => {
             </div>
 
             <div className="max-w-6xl mx-auto px-4 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-4xl md:text-5xl font-playfair text-black dark:text-white flex items-center justify-center gap-3">
-                        <Camera className="text-rose" size={40} />
-                        Memory Gallery
-                    </h2>
-                    <p className="text-gray-600 dark:text-gray-400 mt-4 font-sans text-lg">Select an album to relive the moments</p>
-                </motion.div>
-
-                {/* Album Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {albums.map((album, index) => (
+                {!isUnlocked ? (
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex flex-col items-center justify-center min-h-[60vh]"
+                    >
+                        <div className="bg-white/70 dark:bg-white/5 backdrop-blur-md border border-rose/20 dark:border-white/10 p-8 rounded-3xl shadow-2xl text-center max-w-md w-full">
+                            <div className="mx-auto w-16 h-16 bg-rose-100 dark:bg-rose/20 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                                <Lock className="text-rose-500" size={32} />
+                            </div>
+                            <h2 className="text-3xl font-playfair text-black dark:text-white mb-2">Private Gallery</h2>
+                            <p className="text-gray-600 dark:text-gray-400 font-sans mb-8">Please enter the secret password to unlock your memories.</p>
+                            
+                            <form onSubmit={handleUnlock} className="flex flex-col gap-4">
+                                <input 
+                                    type="password" 
+                                    value={passwordInput}
+                                    onChange={(e) => { setPasswordInput(e.target.value); setError(false); }}
+                                    placeholder="Enter password..."
+                                    className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-black/50 border focus:outline-none focus:ring-2 focus:ring-rose/50 transition-all ${error ? 'border-red-500' : 'border-gray-200 dark:border-white/10'}`}
+                                />
+                                {error && <p className="text-red-500 text-sm -mt-1 text-left px-2">Incorrect password. Please try again.</p>}
+                                <button 
+                                    type="submit"
+                                    className="w-full py-3 mt-2 bg-gradient-to-r from-rose-400 to-purple-600 text-white font-semibold rounded-xl hover:shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:opacity-90 transition-all"
+                                >
+                                    Unlock 🔓
+                                </button>
+                            </form>
+                        </div>
+                    </motion.div>
+                ) : (
+                    <>
                         <motion.div
-                            key={album.id}
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.2, duration: 0.6 }}
-                            onClick={() => openAlbum(album)}
-                            className="group cursor-pointer rounded-2xl overflow-hidden bg-white/70 dark:bg-white/5 backdrop-blur-sm border border-rose/10 dark:border-white/10 hover:border-rose/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(192,128,129,0.2)] aspect-square relative shadow-xl"
+                            transition={{ duration: 0.8 }}
+                            className="text-center mb-16"
                         >
-                            <img
-                                src={album.cover}
-                                alt={album.title}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
-                                <h3 className="text-2xl font-serif text-white drop-shadow-md">{album.title}</h3>
-                                <p className="text-gold-light/80 text-sm mt-1">{album.media.length} items</p>
-                            </div>
+                            <h2 className="text-4xl md:text-5xl font-playfair text-black dark:text-white flex items-center justify-center gap-3">
+                                <Camera className="text-rose" size={40} />
+                                Memory Gallery
+                            </h2>
+                            <p className="text-gray-600 dark:text-gray-400 mt-4 font-sans text-lg">Select an album to relive the moments</p>
                         </motion.div>
-                    ))}
-                </div>
+
+                        {/* Album Grid Layout */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {albums.map((album, index) => (
+                                <motion.div
+                                    key={album.id}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.2, duration: 0.6 }}
+                                    onClick={() => openAlbum(album)}
+                                    className="group cursor-pointer rounded-2xl overflow-hidden bg-white/70 dark:bg-white/5 backdrop-blur-sm border border-rose/10 dark:border-white/10 hover:border-rose/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(192,128,129,0.2)] aspect-square relative shadow-xl"
+                                >
+                                    <img
+                                        src={album.cover}
+                                        alt={album.title}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                                        <h3 className="text-2xl font-serif text-white drop-shadow-md">{album.title}</h3>
+                                        <p className="text-gold-light/80 text-sm mt-1">{album.media.length} items</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </>
+                )}
             </div>
 
             {/* Album Slideshow View */}
