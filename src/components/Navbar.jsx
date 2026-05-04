@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
 
 const navLinks = [
     { name: "Home", href: "#home" },
@@ -16,6 +18,14 @@ const navLinks = [
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+    const supabase = createClient();
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        router.push('/login');
+        router.refresh();
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -65,6 +75,13 @@ const Navbar = () => {
                     <div className="flex items-center gap-4">
                         <ThemeToggle />
                         
+                        <button 
+                            onClick={handleLogout}
+                            className="hidden md:flex items-center gap-2 text-sm bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/30 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 px-3 py-1.5 rounded-full transition-colors"
+                        >
+                            <LogOut size={16} /> Logout
+                        </button>
+
                         {/* Mobile Menu Toggle */}
                         <div className="md:hidden">
                             <button onClick={() => setIsOpen(!isOpen)} className="text-black dark:text-white">
@@ -93,6 +110,12 @@ const Navbar = () => {
                                 {link.name}
                             </a>
                         ))}
+                        <button 
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 text-lg text-rose-500 hover:text-rose-600 transition-colors mt-2"
+                        >
+                            <LogOut size={20} /> Logout
+                        </button>
                     </div>
                 </motion.div>
             )}
