@@ -8,42 +8,103 @@ import { Camera, X, ChevronLeft, ChevronRight, Play, Lock } from "lucide-react";
 const albums = [
     {
         id: 1,
-        title: "Sweet Memories",
-        cover: "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop",
+        title: "Your Sweet Memories",
+        cover: "/her_3.JPG",
         media: [
-            { type: "image", src: "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop" },
-            { type: "image", src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop" },
+            { type: "video", src: "/her_1.MP4" },
+            { type: "image", src: "/her_2.PNG" },
+            { type: "image", src: "/her_3.JPG" },
+            { type: "image", src: "/her_4.JPG" },
+            { type: "video", src: "/her_5.MP4" },
+            { type: "image", src: "/her_6.JPG" },
+            { type: "image", src: "/her_7.JPG" },
+            { type: "video", src: "/her_8.MOV" },
+            { type: "image", src: "/her_9.JPG" },
+            { type: "image", src: "/her_10.JPG" },
+            { type: "image", src: "/her_11.JPG" },
+            { type: "video", src: "/her_12.MOV" },
+            { type: "video", src: "/her_13.MP4" },
+            { type: "image", src: "/her_14.JPG" },
+            { type: "image", src: "/her_15.JPG" },
+            { type: "image", src: "/her_16.JPG" },
+            { type: "image", src: "/her_17.JPG" },
+            { type: "image", src: "/her_18.JPG" },
+            { type: "image", src: "/her_19.JPG" },
+            { type: "image", src: "/her_20.JPG" },
         ]
     },
     {
         id: 2,
-        title: "Adventures",
-        cover: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop",
+        title: "Fun With Friends",
+        cover: "/All_3.JPG",
         media: [
-            { type: "image", src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop" },
-            // Placeholder for a video. The user can add their own video src later.
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { type: "video", src: "/All_1.MOV" },
+            { type: "image", src: "/All_2.JPG" },
+            { type: "image", src: "/All_3.JPG" },
+            { type: "video", src: "/All_4.MOV" },
+            { type: "image", src: "/All_5.JPG" },
+            { type: "image", src: "/All_6.JPG" },
+            { type: "image", src: "/All_7.JPG" },
+            { type: "image", src: "/All_8.JPG" },
+            { type: "image", src: "/All_9.JPG" },
+            { type: "video", src: "/All_10.MOV" },
+            { type: "image", src: "/All_11.JPG" },
+            { type: "image", src: "/All_12.JPG" },
+            { type: "image", src: "/All_13.JPG" },
+            { type: "image", src: "/All_14.JPG" },
+            { type: "image", src: "/All_15.JPG" },
         ]
     },
     {
         id: 3,
-        title: "Funny Times",
-        cover: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?q=80&w=800&auto=format&fit=crop",
+        title: "You N Me",
+        cover: "/Us_3.JPG",
         media: [
-            { type: "image", src: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?q=80&w=800&auto=format&fit=crop" },
+            { type: "video", src: "/Us_1.MP4" },
+            { type: "video", src: "/Us_2.MP4" },
+            { type: "image", src: "/Us_3.JPG" },
+            { type: "video", src: "/Us_5.MOV" },
+            { type: "image", src: "/Us_6.JPG" },
+            { type: "image", src: "/Us_7.JPG" },
+            { type: "video", src: "/Us_8.MOV" },
+            { type: "image", src: "/Us_9.JPG" },
+            { type: "image", src: "/Us_11.JPG" },
+            { type: "image", src: "/Us_12.JPG" },
+            { type: "image", src: "/Us_13.JPG" },
+            { type: "image", src: "/Us_14.JPG" },
+            { type: "image", src: "/Us_15.JPG" },
+            { type: "image", src: "/Us_17.JPG" },
+            { type: "image", src: "/Us_18.JPG" },
+            { type: "image", src: "/Us_19.JPG" },
+            { type: "image", src: "/Us_20.JPG" }
         ]
     },
     {
         id: 4,
-        title: "You Slay ✨",
-        cover: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop", // Fashion/Cool
+        title: "You Slay Bubs ✨",
+        cover: "/Slay_12.JPG", // Fashion/Cool
         media: [
-            // Placeholder for an image
-            { type: "image", src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop" },
-            // Placeholder for a video to be added later
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-            // Placeholders can be freely added below
-            { type: "image", src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop" }
+            { type: "image", src: "/Slay_1.JPG" },
+            { type: "image", src: "/Slay_2.JPG" },
+            { type: "image", src: "/Slay_3.JPG" },
+            { type: "image", src: "/Slay_4.JPG" },
+            { type: "image", src: "/Slay_5.JPG" },
+            { type: "video", src: "/Slay_6.MP4" },
+            { type: "video", src: "/Slay_7.MP4" },
+            { type: "image", src: "/Slay_8.JPG" },
+            { type: "image", src: "/Slay_9.JPG" },
+            { type: "video", src: "/Slay_10.MP4" },
+            { type: "image", src: "/Slay_11.JPG" },
+            { type: "image", src: "/Slay_12.JPG" },
+            { type: "video", src: "/Slay_13.MOV" },
+            { type: "image", src: "/Slay_14.JPG" },
+            { type: "image", src: "/Slay_15.JPG" },
+            { type: "image", src: "/Slay_16.JPG" },
+            { type: "image", src: "/Slay_17.JPG" },
+            { type: "video", src: "/Slay_18.MOV" },
+            { type: "video", src: "/Slay_19.MOV" },
+            { type: "image", src: "/Slay_20.JPG" },
+
         ]
     },
 ];
@@ -110,17 +171,17 @@ const Gallery = () => {
                             </div>
                             <h2 className="text-3xl font-playfair text-black dark:text-white mb-2">Private Gallery</h2>
                             <p className="text-gray-600 dark:text-gray-400 font-sans mb-8">Please enter the secret password to unlock your memories.</p>
-                            
+
                             <form onSubmit={handleUnlock} className="flex flex-col gap-4">
-                                <input 
-                                    type="password" 
+                                <input
+                                    type="password"
                                     value={passwordInput}
                                     onChange={(e) => { setPasswordInput(e.target.value); setError(false); }}
                                     placeholder="Enter password..."
                                     className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-black/50 border focus:outline-none focus:ring-2 focus:ring-rose/50 transition-all ${error ? 'border-red-500' : 'border-gray-200 dark:border-white/10'}`}
                                 />
                                 {error && <p className="text-red-500 text-sm -mt-1 text-left px-2">Incorrect password. Please try again.</p>}
-                                <button 
+                                <button
                                     type="submit"
                                     className="w-full py-3 mt-2 bg-gradient-to-r from-rose-400 to-purple-600 text-white font-semibold rounded-xl hover:shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:opacity-90 transition-all"
                                 >
